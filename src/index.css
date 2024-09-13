@@ -1,68 +1,77 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", system-ui;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none;
+  color: #222;
 }
-a:hover {
-  color: #535bf2;
+.app {
+  width: 90%;
+  margin: auto;
 }
-
-body {
-  margin: 0;
+header {
+  padding: 20px;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.logo img {
+  width: 130px;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.navbar {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+}
+.navbar a:first-child {
+  border-bottom: 2px solid tomato;
+}
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.header-cta img {
+  width: 25px;
+}
+.header-cta button {
+  padding: 10px 20px;
+  /* color: tomato; */
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid tomato;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.2s ease-in;
 }
-button:hover {
-  border-color: #646cff;
+.header-cta button:hover {
+  background-color: tomato;
+  color: #fff;
+  /* font-weight: bolder; */
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.header-cart {
+  position: relative;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.dot {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: tomato;
+  border-radius: 50%;
+  top: -6px;
+  right: -7px;
+}
+@media (max-width: 1100px) {
+  .app {
+    width: 100%;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+}
+@media (max-width: 720px) {
+  .navbar {
+    display: none;
   }
 }
