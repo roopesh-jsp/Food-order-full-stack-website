@@ -1,13 +1,38 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useCartData } from "../store/CartContext";
 
 export default function FoodItem({ data }) {
-  console.log(data);
-
+  const { cartItems, addToCart, removeFromCart } = useCartData();
   return (
     <div className="food_item">
       <div className="food_item_img">
         <img src={data.image} alt={data.name} />
+        <div className="food_item_cta">
+          {cartItems[data._id] ? (
+            <div className="food_item_cta_add_remove">
+              <img
+                src={assets.remove_icon_red}
+                alt=""
+                onClick={() => removeFromCart(data._id)}
+              />
+              <p>{cartItems[data._id]}</p>
+              <img
+                src={assets.add_icon_green}
+                alt=""
+                onClick={() => addToCart(data._id)}
+              />
+            </div>
+          ) : (
+            <div className="food_item_cta_add">
+              <img
+                src={assets.add_icon_white}
+                alt=""
+                onClick={() => addToCart(data._id)}
+              />
+            </div>
+          )}
+        </div>
       </div>
       <div className="food_item_name_star_ratting">
         <h2>{data.name}</h2>

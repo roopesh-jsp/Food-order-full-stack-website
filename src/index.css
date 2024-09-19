@@ -180,12 +180,38 @@ header {
 }
 .food_item_img {
   width: 100%;
+  position: relative;
 }
 
 .food_item_img img {
   height: 100%;
   width: 100%;
   background-size: cover;
+}
+.food_item_cta {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.food_item_cta img {
+  cursor: pointer;
+  width: 35px;
+}
+.food_item_cta_add_remove {
+  display: flex;
+  background-color: #fff;
+  border-radius: 30px;
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+  /* font-size: 30px; */
+  font-weight: 600;
+}
+.food_item_cta_add_remove img {
+  width: 30px;
+}
+.food_item_cta img:hover {
+  scale: 1.05;
 }
 .food_item_name_star_ratting {
   display: flex;
@@ -206,4 +232,56 @@ header {
   font-size: 20px;
   color: tomato;
   padding: 10px 0px 20px 20px;
+}
+/* app download *******************/
+.app_download_img {
+  display: flex;
+  gap: 20px;
+}
+#appDownload {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: fit-content;
+  margin: 100px auto;
+}
+#appDownload h1 {
+  font-size: 30px;
+  width: 500px;
+  text-align: center;
+}
+
+/* footer *****************/
+#footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 30px;
+  width: 98.5vw;
+  position: absolute;
+  left: 0;
+
+  background-color: #222;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 10px;
+  color: #d8d8d8;
+}
+.footer h6 {
+  font-weight: 300;
+  margin-left: 10px;
+}
+.footer_1 {
+  width: 45%;
+}
+.footer_1 img {
+  width: 100px;
+}
+.footer_1 p {
+  margin: 10px 0;
+  font-size: 11px;
 }

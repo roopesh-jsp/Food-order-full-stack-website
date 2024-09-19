@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import Menu from "../components/Menu";
+import AppDownload from "../components/AppDownload";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -9,6 +11,8 @@ export default function Home() {
       <Header />
       <HeroSection />
       <Menu />
+      <AppDownload />
+      <Footer />
     </>
   );
 }
