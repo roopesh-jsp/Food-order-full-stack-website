@@ -285,3 +285,112 @@ header {
   margin: 10px 0;
   font-size: 11px;
 }
+
+/* auth form ***********************/
+
+.authContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.authForm {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+  width: 350px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.authForm h1 {
+  margin-left: 10px;
+  text-transform: capitalize;
+}
+.authForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  padding: 0 10px;
+}
+.authForm form input {
+  padding: 10px;
+  border: 2px solid #00000015;
+  /* border-radius: 10px; */
+}
+
+.authForm form button {
+  width: 100px;
+  padding: 10px;
+  background-color: tomato;
+  color: #fff;
+  border: none;
+  margin: 10px auto 0;
+  border-radius: 20px;
+}
+
+.authForm form p {
+  font-size: 11px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.authForm form span {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 20px;
+  cursor: pointer;
+}
+
+/* cart ***********************/
+#cart {
+  padding: 20px;
+  min-height: 100vh;
+}
+.cart_items_title {
+  text-transform: capitalize;
+  color: grey;
+}
+.cart_table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr;
+}
+.cart_table img {
+  width: 50px;
+}
+.cross {
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  cursor: pointer;
+}
+.cross img {
+  width: 15px;
+  height: 15px;
+}
+.cross:hover {
+  background-color: #ededed;
+}
+.cart_item {
+  margin: 10px 0;
+  align-items: center;
+  text-transform: capitalize;
+}

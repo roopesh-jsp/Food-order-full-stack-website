@@ -6,7 +6,7 @@ import FoodItems from "./FoodItems";
 export default function Menu() {
   const [catogorey, setCatogorey] = useState("all");
   return (
-    <div className="menu">
+    <div className="menu" id="catogorey">
       <h3>Explore our menu</h3>
       <p>
         Discover a world of flavors on our menu! From sizzling starters to
