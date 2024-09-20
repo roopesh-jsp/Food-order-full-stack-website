@@ -1,9 +1,10 @@
 import React from "react";
 import { useCartData } from "../store/CartContext";
 import { assets } from "../assets/assets";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { item, cartItems, removeFromCart } = useCartData();
+  const { item, cartItems, removeFromCart, getTotal } = useCartData();
   return (
     <div id="cart">
       <div className="cart_items_title cart_table">
@@ -38,6 +39,36 @@ export default function Cart() {
             );
           }
         })}
+      </div>
+      <div className="cart_bottom">
+        <div className="cart_left">
+          <h2>cart total</h2>
+          <div className="cart_left_item">
+            <p>subtotal</p>
+            <p>${getTotal()}</p>
+          </div>
+          <hr />
+          <div className="cart_left_item">
+            <p>Delivery Fee</p>
+            <p>${2}</p>
+          </div>
+          <hr />
+          <div className="cart_left_item_toal cart_left_item">
+            <p>total</p>
+            <p>${getTotal() + 2}</p>
+          </div>
+          <Link to="/order">
+            <button>Proceed to checkout</button>
+          </Link>
+        </div>
+
+        <div className="cart_right">
+          <p>if you have a promo code, enter it here</p>
+          <div className="promocode">
+            <input type="text" placeholder="promo code" />
+            <button>submit</button>
+          </div>
+        </div>
       </div>
     </div>
   );

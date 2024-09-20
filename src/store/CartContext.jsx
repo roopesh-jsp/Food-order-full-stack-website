@@ -19,12 +19,22 @@ export const CartContextProvider = ({ children }) => {
       return { ...prev, [id]: prev[id] - 1 };
     });
   }
+  function getTotal() {
+    let total = 0;
+    for (const item of food_list) {
+      if (cartItems[item._id] > 0) {
+        total += cartItems[item._id] * item.price;
+      }
+    }
+    return total;
+  }
   const ctxVal = {
     item: food_list,
     cartItems,
     setCartItems,
     addToCart,
     removeFromCart,
+    getTotal,
   };
   return <cartContext.Provider value={ctxVal}>{children}</cartContext.Provider>;
 };

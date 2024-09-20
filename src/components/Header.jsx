@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import AuthForm from "../pages/AuthForm";
 import { Link } from "react-router-dom";
+import { useCartData } from "../store/CartContext";
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
+  const { getTotal } = useCartData();
   return (
     <header>
       {showLogin && <AuthForm setShowLogin={setShowLogin} />}
@@ -27,7 +29,7 @@ export default function Header() {
             {" "}
             <img src={assets.basket_icon} alt="bag" />
           </Link>
-          <div className="dot"></div>
+          {getTotal() === 0 ? <></> : <div className="dot"></div>}
         </div>
         <button onClick={() => setShowLogin(true)}>sign in</button>
       </div>
