@@ -13,6 +13,7 @@ app.use(cors());
 // api endpoints
 
 app.use("/admin", routes);
+app.use("/images", express.static("uploads"));
 
 app.listen(3000, () => {
   connectDb();
