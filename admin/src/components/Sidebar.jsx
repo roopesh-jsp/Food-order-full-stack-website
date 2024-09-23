@@ -5,7 +5,7 @@ import { assets } from "../assets/assets";
 export default function Sidebar() {
   return (
     <div id="sidebar">
-      <NavLink to="/" className={({ isActive }) => isActive && "active"}>
+      <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
         <img src={assets.add_icon} alt="" />
         <p>add item</p>
       </NavLink>

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets.js";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+// import { toast, ToastContainer } from "react-toastify";
 
 export default function AddItem() {
   const [image, setImage] = useState(null);
+  const [errors, setErrors] = useState(null);
+  const navigate = useNavigate();
 
   function handleChnage(e) {
     setData((prev) => {
@@ -12,12 +16,35 @@ export default function AddItem() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    const formdata = new FormData(e.target);
-    const data = Object.fromEntries(formdata);
-    const res = await axios.post("http://localhost:3000/admin/add", { data });
+    const formdataa = new FormData(e.target);
+    const data = Object.fromEntries(formdataa);
+
+    const formdata = new FormData();
+    formdata.append("name", data.name);
+    formdata.append("price", Number(data.price));
+    formdata.append("discription", data.discription);
+    formdata.append("catogery", data.catogery);
+    formdata.append("image", image);
+
+    const res = await axios.post("http://localhost:3000/admin/add", formdata);
+
+    // if (res.data.sucess) {
+    //   toast.success("item created", {
+    //     position: "top-right",
+    //   });
+    // } else {
+    //   toast.error(res.data.msg);
+    // }
+    if (res.data.sucess) {
+      navigate("/items");
+      setErrors(null);
+    } else {
+      setErrors(res.data.err.message);
+    }
   }
   return (
     <div id="addItem">
+      {/* <ToastContainer position="top-right" /> */}
       <form onSubmit={handleSubmit}>
         <div className="upload_img">
           <h3>upload image</h3>
@@ -29,7 +56,6 @@ export default function AddItem() {
           </label>
           <input
             onChange={(e) => {
-              console.log(e);
               setImage(e.target.files[0]);
             }}
             type="file"
@@ -64,6 +90,7 @@ export default function AddItem() {
             <input type="number" name="price" id="" />
           </div>
         </div>
+        {errors && <h3 className="error">{errors}</h3>}
         <button>add</button>
       </form>
     </div>

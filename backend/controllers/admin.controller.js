@@ -6,23 +6,28 @@ import fs from "fs";
 
 const addFoddItem = async (req, res) => {
   const { name, price, discription, catogery } = req.body;
-  console.log(req.file);
-  const imageName = `${req.file.filename}`;
 
-  const foodItem = new Food({
-    name,
-    price,
-    discription,
-    catogery,
-    image: imageName,
-  });
   try {
+    const imageName = `${req.file.filename}`;
+    if (!name || !price || !discription || !catogery) {
+      console.log(name);
+      const err = new Error();
+      err.message = "enter all fields";
+      throw err;
+    }
+
+    const foodItem = new Food({
+      name,
+      price,
+      discription,
+      catogery,
+      image: imageName,
+    });
     const result = await foodItem.save();
     console.log(result);
-    res.json({ data: result });
+    res.json({ sucess: true, data: result });
   } catch (err) {
-    console.log(err);
-    res.json({ error: err });
+    res.json({ sucess: false, err });
   }
 };
 
@@ -42,6 +47,8 @@ const getAllItems = async (req, res) => {
 
 const removeItem = async (req, res) => {
   const id = req.params.id;
+  console.log(id);
+
   try {
     const item = await Food.findById(id);
     fs.unlink(`uploads/${item.image}`, () => {});
