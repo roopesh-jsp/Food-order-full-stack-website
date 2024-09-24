@@ -1,28 +1,92 @@
 import React from "react";
 import { useCartData } from "../store/CartContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Order() {
-  const { getTotal } = useCartData();
+  const { getTotal, item, cartItems } = useCartData();
+  const navigate = useNavigate();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formdata = new FormData(e.target);
+    const address = Object.fromEntries(formdata);
+    let items = [];
+    for (const x of item) {
+      console.log(cartItems);
+
+      if (cartItems[x._id] > 0) {
+        let temp = {
+          item: x,
+          qty: cartItems[x._id],
+        };
+        items.push(temp);
+      }
+    }
+    const total = getTotal();
+    console.log("add:", address);
+
+    const data = {
+      address,
+      items,
+      amount: total,
+    };
+    const res = await axios.post("http://localhost:3000/orders/place", data, {
+      headers: { token: localStorage.getItem("token") },
+    });
+    console.log(res);
+
+    if (res.data.success) {
+      // navigate("/orderfinal");
+      console.log(success);
+    } else {
+      console.log("error");
+    }
+  }
+  function helper(e) {
+    e.preventDefault();
+    handleSubmit(e);
+  }
   return (
     <div id="order">
       <div className="order_left">
         <h2>Delivery information</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="order_grp">
-            <input type="text" placeholder="first name" />
-            <input type="text" placeholder="last name" />
+            <input
+              required
+              type="text"
+              name="first name"
+              placeholder="first name"
+            />
+            <input
+              required
+              type="text"
+              name="last name"
+              placeholder="last name"
+            />
           </div>
-          <input type="text" placeholder="email address" />
-          <input type="text" placeholder="street" />
+          <input
+            required
+            type="text"
+            name="email"
+            placeholder="email address"
+          />
+          <input required type="text" name="street" placeholder="street" />
           <div className="order_grp">
-            <input type="text" placeholder="city" />
-            <input type="text" placeholder="state" />
+            <input required type="text" name="city" placeholder="city" />
+            <input required type="text" name="state" placeholder="state" />
           </div>
           <div className="order_grp">
-            <input type="text" placeholder="zip code" />
-            <input type="text" placeholder="country" />
+            <input
+              required
+              type="text"
+              name="zip code"
+              placeholder="zip code"
+            />
+            <input required type="text" name="country" placeholder="country" />
           </div>
-          <input type="text" placeholder="number" />
+          <input required type="text" name="number" placeholder="number" />
+          <button>Order now</button>
         </form>
       </div>
       <div className="cart_left">
@@ -41,8 +105,6 @@ export default function Order() {
           <p>total</p>
           <p>${getTotal() + 2}</p>
         </div>
-
-        <button>pay now</button>
       </div>
     </div>
   );

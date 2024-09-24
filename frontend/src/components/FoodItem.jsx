@@ -7,7 +7,10 @@ export default function FoodItem({ data }) {
   return (
     <div className="food_item">
       <div className="food_item_img">
-        <img src={data.image} alt={data.name} />
+        <img
+          src={`http://localhost:3000/images/${data.image}`}
+          alt={data.name}
+        />
         <div className="food_item_cta">
           {cartItems[data._id] ? (
             <div className="food_item_cta_add_remove">
@@ -39,7 +42,7 @@ export default function FoodItem({ data }) {
         <img src={assets.rating_starts} alt="" />
       </div>
       <div className="food_item_desc">
-        <p>{data.description}</p>
+        <p>{data.discription}</p>
       </div>
       <div className="food_item_price">
         <h4>{data.price} $</h4>

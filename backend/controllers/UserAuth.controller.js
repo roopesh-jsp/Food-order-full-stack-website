@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 
 const generateToken = async (id) => {
-  return jwt.sign({ id }, "secretttt");
+  return jwt.sign({ id }, process.env.JWT_SECERET);
 };
 
 const register = async (req, res) => {

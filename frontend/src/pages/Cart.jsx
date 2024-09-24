@@ -21,10 +21,13 @@ export default function Cart() {
         {item.map((ele, idx) => {
           if (cartItems[ele._id] > 0) {
             return (
-              <>
+              <div key={ele._id}>
                 <div className="cart_item cart_table">
                   <p>
-                    <img src={ele.image} alt="" />
+                    <img
+                      src={`http://localhost:3000/images/${ele.image}`}
+                      alt=""
+                    />
                   </p>
                   <p>{ele.name}</p>
                   <p>${ele.price}</p>
@@ -35,7 +38,7 @@ export default function Cart() {
                   </p>
                 </div>
                 <hr />
-              </>
+              </div>
             );
           }
         })}
