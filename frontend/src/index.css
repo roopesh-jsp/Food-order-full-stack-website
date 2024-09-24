@@ -556,3 +556,11 @@ orders *****************************/
     width: 80%;
   }
 }
+
+.error {
+  color: red;
+  font-weight: 700;
+  font-size: 50px;
+  position: relative;
+  top: 20px;
+}

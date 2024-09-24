@@ -6,7 +6,11 @@ import { useCartData } from "../store/CartContext";
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
-  const { getTotal } = useCartData();
+  const { getTotal, token, setToken } = useCartData();
+  function handleLogout() {
+    setToken(null);
+    localStorage.removeItem("token");
+  }
   return (
     <header>
       {showLogin && <AuthForm setShowLogin={setShowLogin} />}
@@ -31,7 +35,11 @@ export default function Header() {
           </Link>
           {getTotal() === 0 ? <></> : <div className="dot"></div>}
         </div>
-        <button onClick={() => setShowLogin(true)}>sign in</button>
+        {token ? (
+          <button onClick={handleLogout}>logout</button>
+        ) : (
+          <button onClick={() => setShowLogin(true)}>sign in</button>
+        )}
       </div>
     </header>
   );

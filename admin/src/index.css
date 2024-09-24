@@ -9,6 +9,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+button {
+  cursor: pointer;
+}
 hr {
   height: 1px;
   background-color: #cdcdcd;
