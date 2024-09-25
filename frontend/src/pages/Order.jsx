@@ -12,8 +12,6 @@ export default function Order() {
     const address = Object.fromEntries(formdata);
     let items = [];
     for (const x of item) {
-      console.log(cartItems);
-
       if (cartItems[x._id] > 0) {
         let temp = {
           item: x,
@@ -23,7 +21,6 @@ export default function Order() {
       }
     }
     const total = getTotal();
-    console.log("add:", address);
 
     const data = {
       address,
@@ -36,21 +33,18 @@ export default function Order() {
     console.log(res);
 
     if (res.data.success) {
-      // navigate("/orderfinal");
-      console.log(success);
+      navigate("/myorders");
     } else {
       console.log("error");
     }
   }
-  function helper(e) {
-    e.preventDefault();
-    handleSubmit(e);
-  }
+
   return (
     <div id="order">
-      <div className="order_left">
-        <h2>Delivery information</h2>
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <div className="order_left">
+          <h2>Delivery information</h2>
+
           <div className="order_grp">
             <input
               required
@@ -86,26 +80,26 @@ export default function Order() {
             <input required type="text" name="country" placeholder="country" />
           </div>
           <input required type="text" name="number" placeholder="number" />
+        </div>
+        <div className="cart_left">
+          <h2>cart total</h2>
+          <div className="cart_left_item">
+            <p>subtotal</p>
+            <p>${getTotal()}</p>
+          </div>
+          <hr />
+          <div className="cart_left_item">
+            <p>Delivery Fee</p>
+            <p>${2}</p>
+          </div>
+          <hr />
+          <div className="cart_left_item_toal cart_left_item">
+            <p>total</p>
+            <p>${getTotal() + 2}</p>
+          </div>
           <button>Order now</button>
-        </form>
-      </div>
-      <div className="cart_left">
-        <h2>cart total</h2>
-        <div className="cart_left_item">
-          <p>subtotal</p>
-          <p>${getTotal()}</p>
         </div>
-        <hr />
-        <div className="cart_left_item">
-          <p>Delivery Fee</p>
-          <p>${2}</p>
-        </div>
-        <hr />
-        <div className="cart_left_item_toal cart_left_item">
-          <p>total</p>
-          <p>${getTotal() + 2}</p>
-        </div>
-      </div>
+      </form>
     </div>
   );
 }

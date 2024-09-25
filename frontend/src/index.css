@@ -512,7 +512,7 @@ header {
 /* 
 orders *****************************/
 
-#order {
+#order form {
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -525,9 +525,9 @@ orders *****************************/
 .order_left {
   width: 50%;
 }
-.order_left form {
+.order_left {
   margin: 20px 0;
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -563,4 +563,58 @@ orders *****************************/
   font-size: 50px;
   position: relative;
   top: 20px;
+}
+
+/* myorder ******************************/
+#my_orders {
+  min-height: 500px;
+}
+.my_order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+  border: 1px solid tomato;
+  margin: 20px;
+}
+.my_order_items {
+  width: 150px;
+}
+.my_order img {
+  width: 50px;
+}
+.my_order span {
+  font-size: 14px;
+}
+.my_order h4 {
+  font-weight: 500;
+}
+
+.my_order .status {
+  background-color: rgb(249, 204, 196);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.my_order button {
+  padding: 10px;
+  background-color: rgb(217, 255, 217);
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .my_order {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  .status {
+    width: fit-content;
+  }
 }
