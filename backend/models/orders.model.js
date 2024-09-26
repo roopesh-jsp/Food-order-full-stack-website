@@ -16,7 +16,7 @@ const ordersSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "Food processing",
+    default: "food processing",
   },
   date: {
     type: Date,

@@ -185,3 +185,68 @@ h2 {
 .cross:hover {
   color: red;
 }
+
+/* orders */
+
+#my_orders {
+  min-height: 500px;
+}
+.my_order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+  width: 80vw;
+  border: 1px solid tomato;
+  margin: 20px;
+}
+.my_order_items {
+  width: 150px;
+}
+.my_order img {
+  width: 50px;
+}
+.my_order span {
+  font-size: 14px;
+}
+.my_order h4 {
+  font-weight: 500;
+}
+
+.my_order .status {
+  background-color: rgb(249, 204, 196);
+  padding: 10px;
+  text-transform: capitalize;
+  border-radius: 6px;
+  border: none;
+  font-size: 11px;
+}
+
+.my_order button {
+  padding: 10px;
+  background-color: rgb(217, 255, 217);
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .my_order {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+
+  .status {
+    width: fit-content;
+  }
+}
+
+.my_order_address {
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 400;
+}

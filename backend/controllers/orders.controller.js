@@ -30,4 +30,27 @@ const getOrders = async (req, res) => {
     res.json({ success: false, msg: "error" });
   }
 };
-export { placeOrder, getOrders };
+
+const getallOrders = async (req, res) => {
+  try {
+    const myOrders = await Orders.find({});
+    res.json({ success: true, myOrders });
+  } catch (err) {
+    console.log(err);
+    res.json({ success: false, msg: "error" });
+  }
+};
+
+const updateOrder = async (req, res) => {
+  const { status, id } = req.body;
+  console.log(req.body);
+
+  try {
+    await Orders.findByIdAndUpdate(id, { status });
+    res.json({ success: true });
+  } catch (error) {
+    console.log(err);
+    res.json({ success: false, msg: "error" });
+  }
+};
+export { placeOrder, getOrders, getallOrders, updateOrder };
