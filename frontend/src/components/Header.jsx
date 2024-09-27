@@ -7,6 +7,7 @@ import { useCartData } from "../store/CartContext";
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
   const { getTotal, token, setToken } = useCartData();
+  const [profileShow, setProfileSHow] = useState(false);
   function handleLogout() {
     setToken(null);
     localStorage.removeItem("token");
@@ -36,7 +37,20 @@ export default function Header() {
           {getTotal() === 0 ? <></> : <div className="dot"></div>}
         </div>
         {token ? (
-          <button onClick={handleLogout}>logout</button>
+          <div
+            className="header_user"
+            onClick={() => {
+              setProfileSHow((prev) => {
+                return !prev;
+              });
+            }}
+          >
+            <img src={assets.profile_icon} alt="" />
+            <div className={profileShow ? "cta active" : "cta"}>
+              <Link to="/myorders">my orders</Link>
+              <button onClick={handleLogout}>logout</button>
+            </div>
+          </div>
         ) : (
           <button onClick={() => setShowLogin(true)}>sign in</button>
         )}

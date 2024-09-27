@@ -618,3 +618,25 @@ orders *****************************/
     width: fit-content;
   }
 }
+
+.header_user {
+  position: relative;
+}
+.header_user .cta {
+  display: none;
+}
+.header_user:hover .cta {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  background-color: rgb(255, 253, 253);
+  /* border: 2px solid rgb(255, 55, 55); */
+  bottom: -120px;
+  padding-top: 50px;
+  right: 0px;
+  padding: 30px 20px 10px 20px;
+  border-radius: 10px;
+  text-transform: capitalize;
+}
