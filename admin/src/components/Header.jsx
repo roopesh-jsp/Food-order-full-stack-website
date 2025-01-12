@@ -5,9 +5,7 @@ export default function Header() {
   return (
     <>
       <header>
-        <div className="logo">
-          <img src={assets.logo} alt="" />
-        </div>
+        <div className="logo">Logo</div>
 
         <div className="profile">
           <img src={assets.profile_image} alt="" />

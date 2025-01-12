@@ -36,6 +36,7 @@ header {
   align-items: center;
   gap: 40px;
 }
+
 .header-cta img {
   width: 25px;
 }
@@ -639,4 +640,10 @@ orders *****************************/
   padding: 30px 20px 10px 20px;
   border-radius: 10px;
   text-transform: capitalize;
+}
+
+.fallback {
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 50px;
 }

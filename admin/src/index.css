@@ -83,6 +83,10 @@ header .logo img {
 
 /* addItem form ***********/
 
+.upload_img {
+  cursor: pointer;
+}
+
 form {
   margin-top: 40px;
   margin-left: 30px;
@@ -104,6 +108,7 @@ form input {
 form textarea {
   width: 400px;
   height: 100px;
+  padding: 10px;
 }
 .flex_row {
   width: 400px;
@@ -164,8 +169,11 @@ form button {
   /* padding: 20px; */
 }
 .items_head {
-  margin: 10px 20px;
-  padding-right: 20px;
+  margin: 20px 20px 0px;
+  padding-right: 30px;
+  text-transform: capitalize;
+  font-weight: lighter;
+  font-size: 18px;
 }
 .item {
   padding: 20px;
@@ -181,9 +189,27 @@ h2 {
 
 .cross {
   cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: capitalize;
 }
-.cross:hover {
+.red {
+  background-color: red;
+  border: 2px solid red;
+}
+.blue {
+  background-color: blue;
+  border: 2px solid blue;
+}
+.cross.red:hover {
   color: red;
+  background-color: #fff;
+}
+.cross.blue:hover {
+  color: blue;
+  background-color: #fff;
 }
 
 /* orders */
@@ -249,4 +275,16 @@ h2 {
   margin-top: 20px;
   font-size: 13px;
   font-weight: 400;
+}
+
+.fallback {
+  text-align: center;
+  text-transform: capitalize;
+  /* background-color: #cdcdcd; */
+  margin: 50px 20px;
+}
+
+.item_cta {
+  display: flex;
+  gap: 10px;
 }

@@ -16,10 +16,7 @@ export default function Header() {
     <header>
       {showLogin && <AuthForm setShowLogin={setShowLogin} />}
       <div className="logo">
-        <Link to="/">
-          {" "}
-          <img src={assets.logo} alt="page-logo" />
-        </Link>
+        <Link to="/">Logo.</Link>
       </div>
       <nav className="navbar">
         <a href="/#">home</a>
@@ -46,7 +43,9 @@ export default function Header() {
             }}
           >
             <img src={assets.profile_icon} alt="" />
-            <div className={profileShow ? "cta active" : "cta"}>
+            <div
+              className={profileShow ? "cta active dropdown" : "cta dropdown"}
+            >
               <Link to="/myorders">my orders</Link>
               <button onClick={handleLogout}>logout</button>
             </div>

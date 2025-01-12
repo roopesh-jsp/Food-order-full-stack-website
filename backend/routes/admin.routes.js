@@ -2,7 +2,9 @@ import express from "express";
 import {
   addFoddItem,
   getAllItems,
+  getItem,
   removeItem,
+  updateItem,
 } from "../controllers/admin.controller.js";
 import multer from "multer";
 const routes = express.Router();
@@ -27,5 +29,9 @@ routes.get("/all", getAllItems);
 // remove items
 
 routes.delete("/delete/:id", removeItem);
+
+routes.post("/update", updateItem);
+
+routes.get("/item/:id", getItem);
 
 export { routes };

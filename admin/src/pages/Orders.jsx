@@ -16,6 +16,11 @@ export default function Orders() {
   }, []);
   return (
     <div id="my_orders">
+      {orders.length === 0 ? (
+        <h1 className="fallback">no orders present</h1>
+      ) : (
+        <></>
+      )}
       {orders.map((order) => (
         <Myorder data={order} key={order._id} />
       ))}

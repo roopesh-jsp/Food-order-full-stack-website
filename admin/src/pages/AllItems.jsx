@@ -16,9 +16,30 @@ export default function AllItems() {
       <h2>all Items</h2>
 
       <div className="items_head">
-        <p>item</p>
-        <p>title</p>
-        <p>price</p>
+        <p
+          style={{
+            position: "relative",
+            left: "30px",
+          }}
+        >
+          item
+        </p>
+        <p
+        // style={{
+        //   position: "relative",
+        //   left: "30px",
+        // }}
+        >
+          title
+        </p>
+        <p
+        // style={{
+        //   position: "relative",
+        //   left: "40px",
+        // }}
+        >
+          price
+        </p>
 
         <p>remove</p>
       </div>
@@ -26,7 +47,7 @@ export default function AllItems() {
       <hr />
       <div className="items">
         {items.map((item, idx) => (
-          <Item data={item} key={item._id} />
+          <Item data={item} key={item._id} getData={getData} />
         ))}
       </div>
     </div>

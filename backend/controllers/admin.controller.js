@@ -47,7 +47,6 @@ const getAllItems = async (req, res) => {
 
 const removeItem = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
 
   try {
     const item = await Food.findById(id);
@@ -60,4 +59,47 @@ const removeItem = async (req, res) => {
   }
 };
 
-export { addFoddItem, getAllItems, removeItem };
+const updateItem = async (req, res) => {
+  try {
+    const { itemId, name, price, discription, catogery } = req.body;
+    console.log(itemId, name, price, discription, catogery);
+
+    const updatedItem = await Food.findByIdAndUpdate(
+      itemId,
+      {
+        name,
+        price,
+        discription,
+        catogery,
+      },
+      {
+        new: true,
+      }
+    );
+    console.log(updateItem);
+
+    res.json({ sucess: true, msg: "item updated", item: updatedItem });
+  } catch (error) {
+    console.log(error);
+    res.json({ sucess: false, msg: error });
+  }
+};
+
+const getItem = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    console.log(req.params);
+
+    const item = await Food.findById(id);
+
+    res.json({
+      success: true,
+      item,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ sucess: false, msg: error });
+  }
+};
+export { addFoddItem, getAllItems, removeItem, updateItem, getItem };
