@@ -1,12 +1,26 @@
-this is a full stack web application 
-.
-.
-.
-technologies used -> react, mongoDb, stripe, nodeJs,  express and others
-.
-.
-.
-i has two interfaces one for users and one for admin. the admin can add remove Food items and monitor orders through the admin panel. where as users can browse the Food items managed by admin.
-.
-.
-packages/libaries used -> cors,axios,react-router-dom,express,mongoose,bcryptjs,express-validator, react-tostify and many more...
+# Food Delivery App (MERN Stack)
+
+The purpose of this project is to develop a food delivery app using the MERN (MongoDB, Express, React, Node.js) stack. The app allows users to order food items. The app is designed to be user-friendly, with a clean and modern interface.
+
+## Tech Stack
+
+**Client:** React, vanilla css
+
+**Server:** Node, Express, MongoDb
+
+## Features
+
+---- ADMIN ----
+
+- admin can add, update, delete food items
+- admin can change the progress of the food order
+- he can view all the food order and their status
+- admin authentication was required for all the above Features
+
+  ---- USERS ----
+
+- users have to login inorder to order food
+- food items can be filtered catogery wise
+- items added to cart can be managed in cart page
+- all the orders new and old are visible in my-orders page
+- user friendly UI
