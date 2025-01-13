@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import AddItem from "./pages/AddItem";
 import AllItems from "./pages/AllItems";
 import Orders from "./pages/Orders";
+import Login from "./pages/Login";
+import { AdminContextProvider } from "./context/adminContext";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
         path: "/orders",
         element: <Orders />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
 ]);
@@ -36,7 +42,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div id="app">
-      <RouterProvider router={router} />
+      <AdminContextProvider>
+        <RouterProvider router={router} />
+      </AdminContextProvider>
     </div>
   );
 }

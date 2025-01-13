@@ -1,17 +1,27 @@
 import React from "react";
 import { assets } from "../assets/assets.js";
 import axios from "axios";
+import { useAdminContext } from "../context/adminContext.jsx";
 
 export default function Myorder({ data }) {
   const noOfItems = data.items.length;
-  console.log(data);
+
+  const { backendUrl, atoken } = useAdminContext();
 
   async function handleChnage(e) {
     console.log(e.target.value);
-    await axios.post("http://localhost:3000/orders/update", {
-      status: e.target.value,
-      id: data._id,
-    });
+    await axios.post(
+      backendUrl + "/orders/update",
+      {
+        status: e.target.value,
+        id: data._id,
+      },
+      {
+        headers: {
+          atoken,
+        },
+      }
+    );
   }
   return (
     <div className="my_order">

@@ -25,7 +25,7 @@ export default function Header() {
         <a href="/#footer">contact-us</a>
       </nav>
       <div className="header-cta">
-        <img src={assets.search_icon} alt="search icon" />
+        {/* <img src={assets.search_icon} alt="search icon" /> */}
         <div className="header-cart">
           <Link to="/cart">
             {" "}

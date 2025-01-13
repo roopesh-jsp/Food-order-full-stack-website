@@ -30,6 +30,11 @@ header {
 header .logo img {
   width: 130px;
 }
+.profile {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
 .profile img {
   width: 50px;
 }
@@ -287,4 +292,25 @@ h2 {
 .item_cta {
   display: flex;
   gap: 10px;
+}
+
+/* login */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login input {
+  border-radius: 3px;
+}
+
+.btn {
+  padding: 5px 10px;
+  background-color: tomato;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  bottom: 5px;
 }

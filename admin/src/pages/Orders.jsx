@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Myorder from "../components/Myorder.jsx";
 import axios from "axios";
+import { useAdminContext } from "../context/adminContext.jsx";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
+  const { backendUrl, atoken } = useAdminContext();
   async function getOrders() {
-    const { data } = await axios.get("http://localhost:3000/orders/allorders");
+    const { data } = await axios.get(backendUrl + "/orders/allorders", {
+      headers: {
+        atoken,
+      },
+    });
 
     if (data.success) {
       setOrders(data.myOrders);

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Myorder from "./Myorder";
+import { useAppContext } from "../store/AppContext";
 
 export default function Myorders() {
   const [orders, setOrders] = useState([]);
+  const { backendUrl } = useAppContext();
   async function getOrders() {
     const { data } = await axios.post(
-      "http://localhost:3000/orders/myorders",
+      backendUrl + "/orders/myorders",
       {},
       { headers: { token: localStorage.getItem("token") } }
     );

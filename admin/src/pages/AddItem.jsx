@@ -3,6 +3,7 @@ import { assets } from "../assets/assets.js";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useAdminContext } from "../context/adminContext.jsx";
 // import { toast, ToastContainer } from "react-toastify";
 
 export default function AddItem() {
@@ -12,6 +13,8 @@ export default function AddItem() {
   const [errors, setErrors] = useState(null);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+
+  const { backendUrl, atoken } = useAdminContext();
 
   async function fetchItemData() {
     try {
@@ -38,10 +41,11 @@ export default function AddItem() {
       const formdataa = new FormData(e.target);
       formdataa.append("itemId", id);
       const dataa = Object.fromEntries(formdataa);
-      const { data } = await axios.post(
-        "http://localhost:3000/admin/update",
-        dataa
-      );
+      const { data } = await axios.post(backendUrl + "/admin/update", dataa, {
+        headers: {
+          atoken,
+        },
+      });
       console.log(data);
 
       if (data.sucess) {
@@ -62,7 +66,11 @@ export default function AddItem() {
 
     console.log(image);
 
-    const res = await axios.post("http://localhost:3000/admin/add", formdata);
+    const res = await axios.post(backendUrl + "/admin/add", formdata, {
+      headers: {
+        atoken,
+      },
+    });
 
     // if (res.data.sucess) {
     //   toast.success("item created", {

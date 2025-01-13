@@ -1,6 +1,7 @@
 import { log } from "console";
 import { Food } from "../models/Food.model.js";
 import fs from "fs";
+import jwt from "jsonwebtoken";
 
 // addfood item
 
@@ -102,4 +103,33 @@ const getItem = async (req, res) => {
     res.json({ sucess: false, msg: error });
   }
 };
-export { addFoddItem, getAllItems, removeItem, updateItem, getItem };
+
+const adminLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (
+      email != process.env.ADMIN_EMAIL ||
+      password != process.env.ADMIN_PASS
+    ) {
+      throw new Error("invalid credentials");
+    }
+
+    const atoken = await jwt.sign({ email }, process.env.JWT_SECERET);
+    res.json({
+      success: true,
+      atoken,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ sucess: false, msg: error.message });
+  }
+};
+export {
+  addFoddItem,
+  getAllItems,
+  removeItem,
+  updateItem,
+  getItem,
+  adminLogin,
+};

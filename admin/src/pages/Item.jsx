@@ -2,11 +2,17 @@ import React from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAdminContext } from "../context/adminContext";
 
 export default function Item({ data, getData }) {
   const navigate = useNavigate();
+  const { backendUrl, atoken } = useAdminContext();
   async function handleDel(id) {
-    const res = await axios.delete(`http://localhost:3000/admin/delete/${id}`);
+    const res = await axios.delete(`${backendUrl}/admin/delete/${id}`, {
+      headers: {
+        atoken,
+      },
+    });
 
     if (res.data.sucess) {
       navigate("/items");
@@ -20,7 +26,7 @@ export default function Item({ data, getData }) {
   return (
     <div className="item">
       <p>
-        <img src={`http://localhost:3000/images/${data.image}`} alt="" />
+        <img src={`${backendUrl}/images/${data.image}`} alt="" />
       </p>
       <p>{data.name}</p>
       <p>${data.price}</p>

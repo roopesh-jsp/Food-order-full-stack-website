@@ -2,9 +2,11 @@ import React from "react";
 import { useCartData } from "../store/CartContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../store/AppContext";
 
 export default function Order() {
   const { getTotal, item, cartItems } = useCartData();
+  const { backendUrl } = useAppContext();
   const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
@@ -27,7 +29,7 @@ export default function Order() {
       items,
       amount: total,
     };
-    const res = await axios.post("http://localhost:3000/orders/place", data, {
+    const res = await axios.post(backendUrl + "/orders/place", data, {
       headers: { token: localStorage.getItem("token") },
     });
     console.log(res);

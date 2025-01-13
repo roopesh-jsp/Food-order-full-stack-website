@@ -1,16 +1,15 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import { useCartData } from "../store/CartContext";
+import { useAppContext } from "../store/AppContext";
 
 export default function FoodItem({ data }) {
   const { cartItems, addToCart, removeFromCart } = useCartData();
+  const { backendUrl } = useAppContext();
   return (
     <div className="food_item">
       <div className="food_item_img">
-        <img
-          src={`http://localhost:3000/images/${data.image}`}
-          alt={data.name}
-        />
+        <img src={`${backendUrl}/images/${data.image}`} alt={data.name} />
         <div className="food_item_cta">
           {cartItems[data._id] ? (
             <div className="food_item_cta_add_remove">

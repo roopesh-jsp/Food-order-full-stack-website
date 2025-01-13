@@ -7,7 +7,7 @@ export default function FoodItems({ catogorey }) {
 
   return (
     <div className="foodItems_container">
-      {data.item.map((item, idx) => {
+      {data.item?.map((item, idx) => {
         if (catogorey === "all" || catogorey === item.catogery) {
           return <FoodItem key={idx} data={item} />;
         }

@@ -1,10 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import axios from "axios";
+import { useAppContext } from "./AppContext";
 
 const cartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
+  const { backendUrl } = useAppContext();
   const [cartItems, setCartItems] = useState({});
   const [food_list, setMenu] = useState([]);
   const [token, setToken] = useState(null);
@@ -18,7 +20,7 @@ export const CartContextProvider = ({ children }) => {
       }
     });
     const res = await axios.post(
-      "http://localhost:3000/cart/add",
+      backendUrl + "/cart/add",
       { itemId: id },
       { headers: { token: localStorage.getItem("token") } }
     );
@@ -28,7 +30,7 @@ export const CartContextProvider = ({ children }) => {
       return { ...prev, [id]: prev[id] - 1 };
     });
     const res = await axios.post(
-      "http://localhost:3000/cart/remove",
+      backendUrl + "/cart/remove",
       { itemId: id },
       { headers: { token: localStorage.getItem("token") } }
     );
@@ -43,14 +45,12 @@ export const CartContextProvider = ({ children }) => {
     return total;
   }
   async function getMenu() {
-    const res = await axios.get("http://localhost:3000/admin/all");
+    const res = await axios.get(backendUrl + "/admin/all");
     setMenu(res.data.items);
   }
   async function getCart() {
-    console.log("yes");
-
     const cart = await axios.post(
-      "http://localhost:3000/cart/",
+      backendUrl + "/cart/",
       {},
       { headers: { token: localStorage.getItem("token") } }
     );

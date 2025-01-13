@@ -1,11 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
+import { useAdminContext } from "../context/adminContext";
 
 export default function AllItems() {
   const [items, setItems] = useState([]);
+
+  const { backendUrl, atoken } = useAdminContext();
   async function getData() {
-    const { data } = await axios.get(`http://localhost:3000/admin/all`);
+    const { data } = await axios.get(`${backendUrl}/admin/all`, {
+      headers: {
+        atoken,
+      },
+    });
     setItems(data.items);
   }
   useEffect(() => {
@@ -32,6 +39,7 @@ export default function AllItems() {
         >
           title
         </p>
+
         <p
         // style={{
         //   position: "relative",

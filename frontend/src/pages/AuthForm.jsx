@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { useCartData } from "../store/CartContext";
+import { useAppContext } from "../store/AppContext";
 
 export default function AuthForm({ setShowLogin }) {
   const { setToken } = useCartData();
+  const { backendUrl } = useAppContext();
   const [currType, setCurrType] = useState("login");
   const [errors, setError] = useState(null);
   async function handlesubmit(e) {
     e.preventDefault();
 
-    let url = "http://localhost:3000/users/";
+    let url = backendUrl + "/users/";
     if (currType === "login") {
       url += "login";
     } else {
