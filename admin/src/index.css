@@ -1,0 +1,316 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+hr {
+  height: 1px;
+  background-color: #cdcdcd;
+  /* width: 100vw; */
+}
+/* #app {
+  width: 90%;
+  margin: 0 auto;
+} */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+header .logo img {
+  width: 130px;
+}
+.profile {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.profile img {
+  width: 50px;
+}
+
+/* sidebar */
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 18%;
+  border-right: 1px solid #222;
+  min-height: 85vh;
+  /* overflow: hidden; */
+  padding-top: 50px;
+}
+
+#sidebar a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-transform: capitalize;
+  width: 80%;
+  margin-left: 20%;
+  border: 2px solid black;
+  border-right: none;
+  padding: 10px;
+}
+
+.active {
+  /* border: 2px solid tomato; */
+  border: none;
+  background-color: rgba(255, 99, 71, 0.8);
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  #sidebar p {
+    display: none;
+  }
+  #sidebar a {
+    justify-content: center;
+  }
+}
+
+.main {
+  display: flex;
+  gap: 10px;
+}
+
+/* addItem form ***********/
+
+.upload_img {
+  cursor: pointer;
+}
+
+form {
+  margin-top: 40px;
+  margin-left: 30px;
+}
+form h3 {
+  font-weight: 400;
+  font-size: 13px;
+  margin: 10px 0 5px 0;
+}
+form img {
+  width: 200px;
+  aspect-ratio: 2/2;
+}
+form input {
+  width: 400px;
+  padding: 10px;
+}
+
+form textarea {
+  width: 400px;
+  height: 100px;
+  padding: 10px;
+}
+.flex_row {
+  width: 400px;
+  display: flex;
+  justify-content: start;
+  gap: 50px;
+  align-items: start;
+  padding: 0 20px;
+}
+.flex_row input {
+  width: 100px;
+  padding: 10px;
+}
+select {
+  padding: 10px;
+  font-weight: 600;
+}
+.flex_col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+form button {
+  width: 100px;
+  margin: 20px;
+  padding: 10px 0;
+  text-align: center;
+  background: #222;
+  color: #fff;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.error {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(238, 99, 99);
+  /* text-transform: capitalize; */
+  position: relative;
+  top: 20px;
+  left: 15px;
+}
+
+/* item***********************/
+.items_head,
+.item {
+  /* display: grid;
+  width: 80vw;
+  padding: 20px;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr; */
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  align-items: center;
+  /* padding: 20px; */
+}
+.items_head {
+  margin: 20px 20px 0px;
+  padding-right: 30px;
+  text-transform: capitalize;
+  font-weight: lighter;
+  font-size: 18px;
+}
+.item {
+  padding: 20px;
+}
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.item img {
+  width: 100px;
+}
+
+.cross {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: capitalize;
+}
+.red {
+  background-color: red;
+  border: 2px solid red;
+}
+.blue {
+  background-color: blue;
+  border: 2px solid blue;
+}
+.cross.red:hover {
+  color: red;
+  background-color: #fff;
+}
+.cross.blue:hover {
+  color: blue;
+  background-color: #fff;
+}
+
+/* orders */
+
+#my_orders {
+  min-height: 500px;
+}
+.my_order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+  width: 80vw;
+  border: 1px solid tomato;
+  margin: 20px;
+}
+.my_order_items {
+  width: 150px;
+}
+.my_order img {
+  width: 50px;
+}
+.my_order span {
+  font-size: 14px;
+}
+.my_order h4 {
+  font-weight: 500;
+}
+
+.my_order .status {
+  background-color: rgb(249, 204, 196);
+  padding: 10px;
+  text-transform: capitalize;
+  border-radius: 6px;
+  border: none;
+  font-size: 11px;
+}
+
+.my_order button {
+  padding: 10px;
+  background-color: rgb(217, 255, 217);
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .my_order {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+
+  .status {
+    width: fit-content;
+  }
+}
+
+.my_order_address {
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.fallback {
+  text-align: center;
+  text-transform: capitalize;
+  /* background-color: #cdcdcd; */
+  margin: 50px 20px;
+}
+
+.item_cta {
+  display: flex;
+  gap: 10px;
+}
+
+/* login */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login input {
+  border-radius: 3px;
+}
+
+.btn {
+  padding: 5px 10px;
+  background-color: tomato;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  bottom: 5px;
+}
