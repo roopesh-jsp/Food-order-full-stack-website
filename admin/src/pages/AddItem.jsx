@@ -18,9 +18,11 @@ export default function AddItem() {
 
   async function fetchItemData() {
     try {
-      const { data } = await axios.get(
-        `http://localhost:3000/admin/item/${id}`
-      );
+      const { data } = await axios.get(`${backendUrl}/admin/item/${id}`, {
+        headers: {
+          atoken,
+        },
+      });
       console.log(data);
       if (data.success) {
         setData(data.item);

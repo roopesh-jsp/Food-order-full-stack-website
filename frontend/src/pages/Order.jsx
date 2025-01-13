@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCartData } from "../store/CartContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +7,14 @@ import { useAppContext } from "../store/AppContext";
 export default function Order() {
   const { getTotal, item, cartItems } = useCartData();
   const { backendUrl } = useAppContext();
+  const [error, setError] = useState();
   const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!localStorage.getItem("token")) {
+      setError("login first");
+      return;
+    }
     const formdata = new FormData(e.target);
     const address = Object.fromEntries(formdata);
     let items = [];
@@ -99,7 +104,20 @@ export default function Order() {
             <p>total</p>
             <p>${getTotal() + 2}</p>
           </div>
-          <button>Order now</button>
+          {error ? (
+            <p
+              style={{
+                color: "red",
+                position: "relative",
+                top: "20px",
+              }}
+            >
+              {error}
+            </p>
+          ) : (
+            <></>
+          )}
+          <button disabled={error ? true : false}>Order now</button>
         </div>
       </form>
     </div>
