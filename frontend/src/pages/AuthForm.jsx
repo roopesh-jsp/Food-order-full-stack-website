@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { useCartData } from "../store/CartContext";
@@ -35,6 +35,12 @@ export default function AuthForm({ setShowLogin }) {
       setError(data.msg);
     }
   }
+
+  // to stop scrolling while displaying  modal
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  }, []);
   return (
     <div className="authContainer">
       <div className="authForm">

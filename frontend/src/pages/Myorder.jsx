@@ -16,8 +16,7 @@ export default function Myorder({ data }) {
       </div>
       <h4>$ {data.amount}</h4>
       <h4>items: {noOfItems}</h4>
-      <h4 className="status">{data.status}</h4>
-      <button>track order</button>
+      <button className="status">{data.status}</button>
     </div>
   );
 }

@@ -92,6 +92,7 @@ header {
   font-size: 50px;
   line-height: 60px;
 }
+
 .hero-content p {
   font-size: 11px;
   margin: 5px 0;
@@ -121,7 +122,11 @@ header {
     width: 90%;
   }
 }
-
+@media (max-width: 450px) {
+  .hero {
+    display: none;
+  }
+}
 /* menu *******************************/
 
 .menu {
@@ -253,6 +258,17 @@ header {
   text-align: center;
 }
 
+@media (max-width: 500px) {
+  #appDownload h1 {
+    font-size: 20px;
+    width: 330px;
+    text-align: center;
+  }
+  .app_download_img {
+    flex-direction: column;
+  }
+}
+
 /* footer *****************/
 #footer {
   display: flex;
@@ -321,6 +337,12 @@ header {
   width: 350px;
   background-color: #ffffff;
   padding: 20px;
+  margin: 0 20px;
+}
+@media (max-width: 420px) {
+  .authForm {
+    width: 80vw;
+  }
 }
 .authForm h1 {
   margin-left: 10px;
@@ -378,10 +400,30 @@ header {
   text-transform: capitalize;
   color: grey;
 }
+.cart_items_title {
+  display: grid;
+  /* gap: 5px; */
+  font-size: 14px;
+  text-align: center;
+  grid-template-columns: 1fr 2.5fr 1fr 1fr 1.5fr 0.5fr;
+}
 .cart_table {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr;
+  gap: 15px;
+  grid-template-columns: 1fr 2.5fr 1fr 1fr 1.5fr 0.5fr;
+  position: relative;
 }
+.cart_items {
+  position: relative;
+  /* left: 20px; */
+  text-align: center;
+}
+/* @media (max-width: 500px) {
+  .cart_items {
+    position: relative;
+ 
+  }
+} */
 .cart_table img {
   width: 50px;
 }
@@ -520,6 +562,15 @@ orders *****************************/
   padding: 20px;
   margin: 40px 0;
 }
+@media (max-width: 600px) {
+  #order form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 10px;
+  }
+}
 #order h2 {
   text-transform: capitalize;
 }
@@ -579,6 +630,14 @@ orders *****************************/
   padding: 20px;
   border: 1px solid tomato;
   margin: 20px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .my_order {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 .my_order_items {
   width: 150px;
@@ -608,6 +667,7 @@ orders *****************************/
   text-transform: uppercase;
   color: #000000;
   cursor: pointer;
+  margin: 0 10px;
 }
 
 @media (max-width: 860px) {

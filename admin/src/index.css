@@ -115,6 +115,16 @@ form textarea {
   height: 100px;
   padding: 10px;
 }
+@media (max-width: 600px) {
+  form input {
+    width: 70vw;
+    border: 1px solid black;
+  }
+  form textarea {
+    width: 70vw;
+    border: 1px solid black;
+  }
+}
 .flex_row {
   width: 400px;
   display: flex;
@@ -169,13 +179,14 @@ form button {
   grid-template-columns: 1fr 1fr 1fr 1fr; */
   display: flex;
   justify-content: space-between;
+  text-align: center;
   width: 80vw;
   align-items: center;
   /* padding: 20px; */
 }
 .items_head {
   margin: 20px 20px 0px;
-  padding-right: 30px;
+  /* padding-right: 30px; */
   text-transform: capitalize;
   font-weight: lighter;
   font-size: 18px;
@@ -275,7 +286,13 @@ h2 {
     width: fit-content;
   }
 }
-
+@media (max-width: 420px) {
+  .my_order {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
 .my_order_address {
   margin-top: 20px;
   font-size: 13px;
@@ -292,8 +309,19 @@ h2 {
 .item_cta {
   display: flex;
   gap: 10px;
+  position: relative;
+  left: 40px;
 }
 
+@media (max-width: 600px) {
+  .item_cta {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .item img {
+    width: 70px;
+  }
+}
 /* login */
 
 .login {

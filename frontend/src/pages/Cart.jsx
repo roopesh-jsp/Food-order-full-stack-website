@@ -12,10 +12,10 @@ export default function Cart() {
       <div className="cart_items_title cart_table">
         <p>item</p>
         <p>title</p>
-        <p>price</p>
-        <p>quantity</p>
-        <p>total</p>
-        <p>remove</p>
+        <p>$</p>
+        <p>Q</p>
+        <p>T</p>
+        <p>X</p>
       </div>
       <br />
       <hr />
@@ -44,7 +44,7 @@ export default function Cart() {
                         <img src={assets.cross_icon} alt="" />
                       </p>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                   </div>
                 );
               }

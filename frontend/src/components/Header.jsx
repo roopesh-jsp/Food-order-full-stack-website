@@ -12,6 +12,7 @@ export default function Header() {
     setToken(null);
     localStorage.removeItem("token");
   }
+
   return (
     <header>
       {showLogin && <AuthForm setShowLogin={setShowLogin} />}
