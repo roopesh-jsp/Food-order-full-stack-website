@@ -10,6 +10,7 @@ export const CartContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
   const [food_list, setMenu] = useState([]);
   const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function addToCart(id) {
     setCartItems((prev) => {
@@ -45,8 +46,10 @@ export const CartContextProvider = ({ children }) => {
     return total;
   }
   async function getMenu() {
+    setLoading(true);
     const res = await axios.get(backendUrl + "/admin/all");
     setMenu(res.data.items);
+    setLoading(false);
   }
   async function getCart() {
     const cart = await axios.post(
@@ -76,6 +79,7 @@ export const CartContextProvider = ({ children }) => {
     getTotal,
     token,
     setToken,
+    loading,
   };
   return <cartContext.Provider value={ctxVal}>{children}</cartContext.Provider>;
 };
